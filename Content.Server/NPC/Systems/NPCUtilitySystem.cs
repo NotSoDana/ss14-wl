@@ -61,7 +61,7 @@ public sealed partial class NPCUtilitySystem : EntitySystem
     [Dependency] private TurretTargetSettingsSystem _turretTargetSettings = default!;
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private SharedStealthSystem _stealth = default!;
-    [Dependency] private readonly HealthRankingSystem _healthRanking = default!; // Offbrand
+    [Dependency] private HealthRankingSystem _healthRanking = default!; // Offbrand
 
     private EntityQuery<PuddleComponent> _puddleQuery;
     private EntityQuery<TransformComponent> _xformQuery;

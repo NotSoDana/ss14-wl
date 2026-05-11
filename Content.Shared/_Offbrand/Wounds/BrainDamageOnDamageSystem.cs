@@ -5,9 +5,9 @@ using Content.Shared.FixedPoint;
 
 namespace Content.Shared._Offbrand.Wounds;
 
-public sealed class BrainDamageOnDamageSystem : OffbrandDamageSystem
+public sealed partial class BrainDamageOnDamageSystem : OffbrandDamageSystem
 {
-    [Dependency] private readonly BrainDamageSystem _brain = default!;
+    [Dependency] private BrainDamageSystem _brain = default!;
 
     public override void Initialize()
     {

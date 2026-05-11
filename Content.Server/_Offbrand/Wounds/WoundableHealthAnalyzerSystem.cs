@@ -11,13 +11,13 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._Offbrand.Wounds;
 
-public sealed class WoundableHealthAnalyzerSystem : SharedWoundableHealthAnalyzerSystem
+public sealed partial class WoundableHealthAnalyzerSystem : SharedWoundableHealthAnalyzerSystem
 {
-    [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly MetabolizerSystem _metabolizer = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private AtmosphereSystem _atmosphere = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private MetabolizerSystem _metabolizer = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
 
     private static readonly ProtoId<MetabolismStagePrototype> MetabolitesStage = "Metabolites";
 

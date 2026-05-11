@@ -5,9 +5,9 @@ using Content.Shared.FixedPoint;
 
 namespace Content.Shared._Offbrand.Wounds;
 
-public sealed class HeartDamageOnDamageSystem : OffbrandDamageSystem
+public sealed partial class HeartDamageOnDamageSystem : OffbrandDamageSystem
 {
-    [Dependency] private readonly HeartSystem _heart = default!;
+    [Dependency] private HeartSystem _heart = default!;
 
     public override void Initialize()
     {

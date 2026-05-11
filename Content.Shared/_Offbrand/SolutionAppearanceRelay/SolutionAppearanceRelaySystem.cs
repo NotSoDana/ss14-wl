@@ -7,23 +7,23 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared._Offbrand.SolutionAppearanceRelay;
 
-public sealed class SolutionAppearanceRelaySystem : EntitySystem
+public sealed partial class SolutionAppearanceRelaySystem : EntitySystem
 {
-    [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SolutionAppearanceRelayComponent, SolutionContainerChangedEvent>(OnSolutionContainerChanged);
+        SubscribeLocalEvent<SolutionAppearanceRelayComponent, SolutionChangedEvent>(OnSolutionContainerChanged);
         SubscribeLocalEvent<SolutionAppearanceRelayComponent, EntGotInsertedIntoContainerMessage>(OnEntGotInsertedIntoContainer);
         SubscribeLocalEvent<SolutionAppearanceRelayComponent, EntGotRemovedFromContainerMessage>(OnEntGotRemovedFromContainer);
     }
 
-    private void OnSolutionContainerChanged(Entity<SolutionAppearanceRelayComponent> ent, ref SolutionContainerChangedEvent args)
+    private void OnSolutionContainerChanged(Entity<SolutionAppearanceRelayComponent> ent, ref SolutionChangedEvent args)
     {
         UpdateAppearance(ent);
     }
@@ -56,7 +56,7 @@ public sealed class SolutionAppearanceRelaySystem : EntitySystem
         if (!_entityWhitelist.CheckBoth(container.Owner, ent.Comp.Blacklist, ent.Comp.Whitelist))
             return;
 
-        _solutionContainer.UpdateAppearance(container.Owner, (solutionEntity.Value.Owner, solutionEntity.Value.Comp, containedSolution));
+        _solutionContainer.UpdateAppearance(container.Owner, (solutionEntity.Value.Owner, solutionEntity.Value.Comp));
         _appearance.SetData(container.Owner, SolutionAppearanceRelayedVisuals.HasRelay, true);
     }
 }

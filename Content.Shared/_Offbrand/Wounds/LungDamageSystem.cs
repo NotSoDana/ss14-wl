@@ -7,10 +7,10 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._Offbrand.Wounds;
 
-public sealed class LungDamageSystem : OffbrandDamageSystem
+public sealed partial class LungDamageSystem : OffbrandDamageSystem
 {
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {
