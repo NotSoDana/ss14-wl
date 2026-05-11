@@ -1,9 +1,9 @@
 using Content.Shared._WL.Passports.Components;
+using Content.Shared._WL.Passports.Events;
 using Content.Shared._WL.Records;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Examine;
-using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
@@ -13,26 +13,26 @@ using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Roles;
 using Content.Shared.GameTicking;
-using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._WL.Passports.Systems;
 
-public sealed class SharedPassportSystem : EntitySystem
+public sealed partial class SharedPassportSystem : EntitySystem
 {
-    public const int CurrentYear = 3026;
-    private const string NoConfederationId = "NoConfederation";
-    const string PIDChars = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789";
-    private static readonly TimeSpan ToggleCooldown = TimeSpan.FromSeconds(0.5);
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedStorageSystem _storage = default!;
+    [Dependency] private SharedTransformSystem _sharedTransformSystem = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogManager = default!;
 
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedStorageSystem _storage = default!;
-    [Dependency] private readonly SharedTransformSystem _sharedTransformSystem = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogManager = default!;
+    public int CurrentYear = DateTime.Today.Year + 849;
+    private const string NoConfederationId = "NoConfederation";
+    private const string PIDChars = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789";
+    private static readonly TimeSpan ToggleCooldown = TimeSpan.FromSeconds(0.5);
+    private ISawmill _sawmill = default!;
 
     public override void Initialize()
     {
@@ -41,15 +41,13 @@ public sealed class SharedPassportSystem : EntitySystem
         SubscribeLocalEvent<PassportComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
         SubscribeLocalEvent<PassportComponent, ExaminedEvent>(OnExamined);
+        _sawmill = LogManager.GetSawmill("passport");
     }
 
     private void OnExamined(EntityUid uid, PassportComponent component, ExaminedEvent args)
     {
         if (!args.IsInDetailsRange || component.IsClosed)
             return;
-
-        // if (string.IsNullOrEmpty(component.DisplayName))
-        //     return;
 
         args.PushText(Loc.GetString("passport-registered-to", ("name", component.DisplayName)), 50);
         args.PushText(Loc.GetString("passport-species", ("species", component.DisplaySpecies)), 49);
@@ -68,15 +66,13 @@ public sealed class SharedPassportSystem : EntitySystem
 
     public void SpawnPassportForPlayer(EntityUid mob, HumanoidCharacterProfile profile, string? jobId)
     {
-        Logger.DebugS("passport", $"Attempting passport spawn for {profile.Name}, job: {jobId}, confederation: {profile.Confederation}");
+        _sawmill.Debug($"Attempting passport spawn for {profile.Name}, job: {jobId}, confederation: {profile.Confederation}");
 
-        if (jobId == null || !_prototypeManager.TryIndex(
-                jobId,
-                out JobPrototype? jobPrototype)
-            || Deleted(mob)
-            || !Exists(mob))
+        if (jobId == null || !_prototypeManager.TryIndex(jobId, out JobPrototype? jobPrototype)
+                          || Deleted(mob)
+                          || !Exists(mob))
         {
-            Logger.WarningS("passport", $"No valid jobId for {profile.Name}");
+            _sawmill.Warning($"No valid jobId for {profile.Name}");
             return;
         }
 
@@ -99,7 +95,6 @@ public sealed class SharedPassportSystem : EntitySystem
 
         if (_inventory.TryGetSlotEntity(mob, "back", out var item) &&
                 TryComp<StorageComponent>(item, out var inventory))
-
         {
             if (!TryComp<ItemComponent>(passportEntity, out var itemComp)
                 || !_storage.CanInsert(item.Value, passportEntity, out _, inventory, itemComp)
@@ -161,14 +156,14 @@ public sealed class SharedPassportSystem : EntitySystem
     private static string GenerateIdentityString(string seed)
     {
         var hashCode = seed.GetHashCode();
-        System.Random random = new System.Random(hashCode);
+        var random = new System.Random(hashCode);
 
-        char[] result = new char[17];
+        var result = new char[17];
 
-        int j = 0;
-        for (int i = 0; i < 15; i++)
+        var j = 0;
+        for (var i = 0; i < 15; i++)
         {
-            if (i == 5 || i == 10)
+            if (i is 5 or 10)
             {
                 result[j++] = '-';
             }
@@ -176,14 +171,5 @@ public sealed class SharedPassportSystem : EntitySystem
         }
 
         return new string(result);
-    }
-
-    [ByRefEvent]
-    public sealed class PassportToggleEvent : HandledEntityEventArgs {}
-
-    [ByRefEvent]
-    public sealed class PassportProfileUpdatedEvent(HumanoidCharacterProfile profile) : HandledEntityEventArgs
-    {
-        public HumanoidCharacterProfile Profile { get; } = profile;
     }
 }
