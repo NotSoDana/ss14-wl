@@ -244,12 +244,13 @@
     emptySpriteName: medipen_empty
   - type: Solution
     solution:
+      maxvol: 30
       reagents:
         # Begin WL-Offbrand
       - ReagentId: Epinephrine
-        Quantity: 12
+        Quantity: 15
       - ReagentId: TranexamicAcid
-        Quantity: 3
+        Quantity: 5
       - ReagentId: Paracetamol
         Quantity: 10
       - ReagentId: Inaprovaline

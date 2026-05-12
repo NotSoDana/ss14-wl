@@ -48,11 +48,7 @@
   components:
   - type: SolutionContainerManager
     solutions:
-      melee:
-        maxVol: 30
-        reagents:
-        - ReagentId: Romerol
-          Quantity: 30
+    - SolutionZombieMelee
   - type: Bloodstream
     bloodlossDamage:
       types:
@@ -63,9 +59,18 @@
   - type: MeleeChemicalInjector
     solution: melee
     transferAmount: 2
+
+- type: entity
+  parent: [SolutionWeapon, SolutionNormal]
+  id: SolutionZombieMelee
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Romerol
+        Quantity: 30
   - type: SolutionRegeneration
-    solution: melee
-    duration: 1
     generated:
       reagents:
       - ReagentId: Romerol
