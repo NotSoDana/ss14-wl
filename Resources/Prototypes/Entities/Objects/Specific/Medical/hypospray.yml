@@ -244,7 +244,7 @@
     emptySpriteName: medipen_empty
   - type: Solution
     solution:
-      maxvol: 30
+      maxVol: 30
       reagents:
         # Begin WL-Offbrand
       - ReagentId: Epinephrine
