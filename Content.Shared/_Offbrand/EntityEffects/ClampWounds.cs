@@ -12,7 +12,8 @@ public sealed partial class ClampWounds : EntityEffectBase<ClampWounds>
 
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
-        return Loc.GetString("entity-effect-guidebook-clamp-wounds", ("probability", Probability), ("chance", Chance));
+        var locChance = string.Format("{0:2}", Chance*100).Replace('.', ',').TrimEnd('0').TrimEnd(',') + "%";
+        return Loc.GetString("entity-effect-guidebook-clamp-wounds", ("probability", Probability), ("chance", locChance));
     }
 }
 

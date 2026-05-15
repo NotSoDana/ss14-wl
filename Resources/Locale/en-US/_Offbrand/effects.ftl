@@ -4,8 +4,8 @@ reagent-guidebook-status-effect = Causes { $effect } during metabolism{ $conditi
     }
 
 entity-effect-guidebook-status-effect-remove = { $chance ->
-        [1] Removes { LOC($key) }
-   *[other] remove { LOC($key) }
+        [1] Removes { $key }
+   *[other] remove { $key }
 }
 
 entity-effect-guidebook-modify-brain-damage-heals = { $chance ->
@@ -33,35 +33,28 @@ entity-effect-guidebook-modify-lung-damage-deals = { $chance ->
    *[other] deal { $amount } lung damage
 }
 entity-effect-guidebook-clamp-wounds = { $probability ->
-        [1] Stops bleeding in wounds with { NATURALPERCENT($chance, 2) } chance per wound
-   *[other] stop bleeding in wounds with { NATURALPERCENT($chance, 2) } chance per wound
+        [1] Stops bleeding in wounds with { $chance } chance per wound
+   *[other] stop bleeding in wounds with { $chance } chance per wound
 }
 entity-condition-guidebook-heart-damage = { $max ->
-    [2147483648] it has at least {NATURALFIXED($min, 2)} heart damage
+    [2147483648] it has at least { $locMin } heart damage
     *[other] { $min ->
-                [0] it has at most {NATURALFIXED($max, 2)} heart damage
-                *[other] it has between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} heart damage
+                [0] it has at most { $locMax } heart damage
+                *[other] it has between { $locMin } and { $locMax } heart damage
              }
 }
 entity-condition-guidebook-lung-damage = { $max ->
-    [2147483648] it has at least {NATURALFIXED($min, 2)} lung damage
+    [2147483648] it has at least { $locMin } lung damage
     *[other] { $min ->
-                [0] it has at most {NATURALFIXED($max, 2)} lung damage
-                *[other] it has between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} lung damage
+                [0] it has at most { $locMax } lung damage
+                *[other] it has between { $locMin } and { $locMax } lung damage
              }
 }
 entity-condition-guidebook-brain-damage = { $max ->
-    [2147483648] it has at least {NATURALFIXED($min, 2)} brain damage
+    [2147483648] it has at least { $locMin } brain damage
     *[other] { $min ->
-                [0] it has at most {NATURALFIXED($max, 2)} brain damage
-                *[other] it has between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} brain damage
-             }
-}
-entity-condition-guidebook-total-group-damage = { $max ->
-    [2147483648] it has at least {NATURALFIXED($min, 2)} { $name } damage
-    *[other] { $min ->
-                [0] it has at most {NATURALFIXED($max, 2)} { $name } damage
-                *[other] it has between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} { $name } damage
+                [0] it has at most { $locMax } brain damage
+                *[other] it has between { $locMin } and { $locMax } brain damage
              }
 }
 entity-effect-guidebook-modify-brain-oxygen-heals = { $chance ->
@@ -84,19 +77,19 @@ entity-effect-guidebook-zombify = { $chance ->
 
 entity-condition-guidebook-total-dosage-threshold =
     { $max ->
-        [2147483648] the total dosage of {$reagent} is at least {NATURALFIXED($min, 2)}u
+        [2147483648] the total dosage of {$reagent} is at least { $locMin }u
         *[other] { $min ->
-                    [0] the total dosage of {$reagent} is at most {NATURALFIXED($max, 2)}u
-                    *[other] the total dosage of {$reagent} is between {NATURALFIXED($min, 2)}u and {NATURALFIXED($max, 2)}u
+                    [0] the total dosage of {$reagent} is at most { $locMax }u
+                    *[other] the total dosage of {$reagent} is between { $locMin }u and { $locMax }u
                  }
     }
 
 entity-condition-guidebook-metabolite-threshold =
     { $max ->
-        [2147483648] there's at least {NATURALFIXED($min, 2)}u of {$reagent} metabolites
+        [2147483648] there's at least { $locMin }u of {$reagent} metabolites
         *[other] { $min ->
-                    [0] there's at most {NATURALFIXED($max, 2)}u of {$reagent} metabolites
-                    *[other] there's between {NATURALFIXED($min, 2)}u and {NATURALFIXED($max, 2)}u of {$reagent} metabolites
+                    [0] there's at most { $locMax }u of {$reagent} metabolites
+                    *[other] there's between { $locMin }u and { $locMax }u of {$reagent} metabolites
                  }
     }
 
@@ -125,7 +118,7 @@ entity-effect-guidebook-adjust-reagent-gaussian =
                 [1] typically add
                 *[-1] typically remove
             }
-    } {NATURALFIXED($mu, 2)}u of {$reagent} { $deltasign ->
+    } { $locMu }u of {$reagent} { $deltasign ->
         [1] to
         *[-1] from
-    } the solution, with the actual amount varying by around {NATURALFIXED($sigma, 2)}u
+    } the solution, with the actual amount varying by around { $locSigma }u

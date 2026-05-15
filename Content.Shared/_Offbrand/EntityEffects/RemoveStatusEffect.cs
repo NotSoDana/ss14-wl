@@ -15,7 +15,7 @@ public sealed partial class RemoveStatusEffect : EntityEffectBase<RemoveStatusEf
         Loc.GetString(
             "entity-effect-guidebook-status-effect-remove",
             ("chance", Probability),
-            ("key", prototype.Index(EffectProto).Name));
+            ("key", Loc.GetString(prototype.Index(EffectProto).Name))); // WL-Changes: Loc fix
 }
 
 public sealed partial class RemoveStatusEffectEntityEffectSystem : EntityEffectSystem<StatusEffectContainerComponent, RemoveStatusEffect>

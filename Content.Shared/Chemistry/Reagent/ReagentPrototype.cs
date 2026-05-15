@@ -328,7 +328,9 @@ namespace Content.Shared.Chemistry.Reagent
             if (!prototype.Resolve(StatusEffect, out var effectProtoData))
                 return null;
 
-            return Loc.GetString("reagent-guidebook-status-effect", ("effect", effectProtoData.Name ?? string.Empty),
+            var locName = Loc.GetString(effectProtoData.Name); //WL-Changes-offbrand-ftl-fix
+
+            return Loc.GetString("reagent-guidebook-status-effect", ("effect", locName), //WL-Changes-offbrand-ftl-fix // effectProtoData.Name ?? string.Empty -> locName
                 ("conditionCount", Conditions?.Length ?? 0),
                 ("conditions",
                     Content.Shared.Localizations.ContentLocalizationManager.FormatList(Conditions?.Select(x => x.EntityConditionGuidebookText(prototype)).ToList() ??

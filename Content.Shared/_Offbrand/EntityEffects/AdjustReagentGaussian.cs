@@ -24,12 +24,18 @@ public sealed partial class AdjustReagentGaussian : EntityEffectBase<AdjustReage
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
         var proto = prototype.Index(Reagent);
+
+        var locMu = string.Format("{0:2}", Math.Abs(μ)).Replace('.', ',').TrimEnd('0').TrimEnd(',');
+        var locSigma = string.Format("{0:2}", Math.Abs(σ)).Replace('.', ',').TrimEnd('0').TrimEnd(',');
+
         return Loc.GetString("entity-effect-guidebook-adjust-reagent-gaussian",
             ("chance", Probability),
             ("deltasign", Math.Sign(μ)),
             ("reagent", proto.LocalizedName),
             ("mu", Math.Abs(μ)),
-            ("sigma", Math.Abs(σ)));
+            ("sigma", Math.Abs(σ)),
+            ("locMu", locMu),
+            ("locSigma", locSigma));
     }
 }
 

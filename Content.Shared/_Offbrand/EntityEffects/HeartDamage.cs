@@ -15,9 +15,14 @@ public sealed partial class HeartDamageCondition : EntityConditionBase<HeartDama
 
     public override string EntityConditionGuidebookText(IPrototypeManager prototype)
     {
+        var tMax = Max == FixedPoint2.MaxValue ? (float) int.MaxValue : Max.Float();
+        var locMax = string.Format("{0:2}", tMax).Replace('.', ',').TrimEnd('0').TrimEnd(',');
+        var locMin = string.Format("{0:2}", Min.Float()).Replace('.', ',').TrimEnd('0').TrimEnd(',');
         return Loc.GetString("reagent-effect-condition-guidebook-heart-damage",
             ("max", Max == FixedPoint2.MaxValue ? (float) int.MaxValue : Max.Float()),
-            ("min", Min.Float()));
+            ("min", Min.Float()),
+            ("locMin", locMin),
+            ("locMax", locMax));
     }
 }
 
