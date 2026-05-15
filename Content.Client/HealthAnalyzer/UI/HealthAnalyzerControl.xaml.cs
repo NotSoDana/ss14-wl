@@ -247,13 +247,13 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
             LungHealthButton.Visible = true;
 
             SpO2Text.Visible = true;
-            SpO2Text.Text = Loc.GetString("health-analyzer-window-entity-spo2-text", ("spo2", woundable.Spo2Name));
+            SpO2Text.Text = Loc.GetString("health-analyzer-window-entity-spo2-text", ("spo2", Loc.GetString(woundable.Spo2Name)));
             SpO2Label.Visible = true;
             SpO2Label.Text = Loc.GetString("health-analyzer-window-entity-spo2-value", ("value", $"{woundable.Spo2 * 100:F1}"));
             SpO2Button.Visible = true;
 
             EtCO2Text.Visible = true;
-            EtCO2Text.Text = Loc.GetString("health-analyzer-window-entity-etco2-text", ("etco2", woundable.Etco2Name));
+            EtCO2Text.Text = Loc.GetString("health-analyzer-window-entity-etco2-text", ("etco2", Loc.GetString(woundable.Etco2Name)));
             EtCO2Label.Visible = true;
             EtCO2Label.Text = Loc.GetString("health-analyzer-window-entity-etco2-value", ("value", $"{woundable.Etco2}"));
             EtCO2Button.Visible = true;

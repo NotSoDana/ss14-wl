@@ -330,7 +330,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-heart-rate", ("rate", woundable.HeartRate)) });
                 var (systolic, diastolic) = woundable.BloodPressure;
                 vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-blood-pressure", ("systolic", systolic), ("diastolic", diastolic)) });
-                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-spo2", ("value", $"{woundable.Spo2 * 100:F1}"), ("spo2", woundable.Spo2Name)) });
+                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-spo2", ("value", $"{woundable.Spo2 * 100:F1}"), ("spo2", Loc.GetString(woundable.Spo2Name))) });
             }
 
             mainContainer.AddChild(vitalsContainer);

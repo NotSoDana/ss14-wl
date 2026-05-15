@@ -3,8 +3,8 @@ health-analyzer-window-entity-blood-pressure-text = Blood Pressure:
 health-analyzer-window-entity-heart-rate-text = Heart Rate:
 health-analyzer-window-entity-heart-health-text = Heart Health:
 health-analyzer-window-entity-lung-health-text = Lung Health:
-health-analyzer-window-entity-spo2-text = {LOC($spo2)}:
-health-analyzer-window-entity-etco2-text = {LOC($etco2)}:
+health-analyzer-window-entity-spo2-text = { $spo2 }:
+health-analyzer-window-entity-etco2-text = { $etco2 }:
 health-analyzer-window-entity-respiratory-rate-text = Respiratory Rate:
 
 health-analyzer-window-entity-brain-health-value = {$value}%
@@ -55,20 +55,20 @@ health-analyzer-blood-pressure-tooltip =
         Damage to the heart or a stopped heart can result in reduced blood pressure.
 
 health-analyzer-spo2-tooltip =
-    A measure of how much {LOC($gas)} is making it to the patient's body, compared to what the patient needs.
+    A measure of how much { $gas } is making it to the patient's body, compared to what the patient needs.
 
     Relevant metrics:
     {"[color=#7af396]"}Metabolic Rate[/color]:
-        Physical trauma and pain can cause the body's {LOC($gas)} demand to increase.
+        Physical trauma and pain can cause the body's { $gas } demand to increase.
 
     {"[color=#7af396]"}Blood Pressure[/color]:
-        Low blood pressure can result in reduced {LOC($spo2)}.
+        Low blood pressure can result in reduced { $spo2 }.
 
     {"[color=#7af396]"}Lung Health[/color]:
-        Low lung health can result in reduced {LOC($spo2)}.
+        Low lung health can result in reduced { $spo2 }.
 
     {"[color=#7af396]"}Asphyxiation[/color]:
-        Asphyxiation can result in reduced {LOC($spo2)}.
+        Asphyxiation can result in reduced { $spo2 }.
 
     {"[color=#7af396]"}Respiratory Rate[/color]:
         Hyperventilation can result in the patient breathing less air per breath.
@@ -76,7 +76,7 @@ health-analyzer-spo2-tooltip =
 health-analyzer-heart-rate-tooltip =
     A measure of how fast the patient's heart is beating.
 
-    The heartrate increases in response to inadequate {LOC($spo2)}.
+    The heartrate increases in response to inadequate { $spo2 }.
 
 health-analyzer-respiratory-rate-tooltip =
     A measure of how fast the patient is breathing.
@@ -86,23 +86,23 @@ health-analyzer-respiratory-rate-tooltip =
     Inaprovaline can encourage healthy breathing.
 
     Relevant metrics:
-    {"[color=#7af396]"}{LOC($spo2)}[/color]:
-        Inadequate access to {LOC($spo2gas)} can result in faster breathing.
+    {"[color=#7af396]"}{ $spo2 }[/color]:
+        Inadequate access to { $spo2gas } can result in faster breathing.
 
     {"[color=#7af396]"}Metabolic Rate[/color]:
         Physical trauma and pain can cause the body to breathe faster.
 
 health-analyzer-etco2-tooltip =
-    A measure of how much {LOC($gas)} is being exhaled with each breath.
+    A measure of how much { $gas } is being exhaled with each breath.
 
-    Low {LOC($etco2)} can result in toxic {LOC($gas)} buildup.
+    Low { $etco2 } can result in toxic { $gas } buildup.
 
     Relevant metrics:
     {"[color=#7af396]"}Respiratory Rate[/color]:
-        Irregular breathing can cause the patient to not fully exhale all {LOC($gas)}.
+        Irregular breathing can cause the patient to not fully exhale all { $gas }.
 
     {"[color=#7af396]"}Blood Pressure[/color]:
-        Low Blood Pressure can cause the patient to hold onto more {LOC($gas)}.
+        Low Blood Pressure can cause the patient to hold onto more { $gas }.
 
 health-analyzer-heart-health-tooltip =
     A measure of the heart's integrity.

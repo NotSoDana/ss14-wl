@@ -9,6 +9,6 @@ public sealed partial class RespiratoryRateTooltip : UpdatableTooltip
         if (msg.WoundableData is not { } woundable)
             return;
 
-        Label.Text = Loc.GetString("health-analyzer-respiratory-rate-tooltip", ("etco2gas", woundable.Etco2GasName), ("etco2", woundable.Etco2Name), ("spo2gas", woundable.Spo2GasName), ("spo2", woundable.Spo2Name));
+        Label.Text = Loc.GetString("health-analyzer-respiratory-rate-tooltip", ("etco2gas", Loc.GetString(woundable.Etco2GasName)), ("etco2", Loc.GetString(woundable.Etco2Name)), ("spo2gas", Loc.GetString(woundable.Spo2GasName)), ("spo2", Loc.GetString(woundable.Spo2Name)));
     }
 }

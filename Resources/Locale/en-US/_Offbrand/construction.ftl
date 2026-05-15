@@ -6,34 +6,34 @@ construction-step-condition-status-effect-should-have = The target needs to have
 construction-step-condition-status-effect-should-not-have = The target needs to not have { $effect }.
 
 construction-examine-heart-damage-range = { $max ->
-    [2147483648] The target needs to have at least {NATURALFIXED($min, 2)} heart damage.
+    [2147483648] The target needs to have at least { $locMin } heart damage.
     *[other] { $min ->
-                [0] The target needs to have at most {NATURALFIXED($max, 2)} heart damage.
-                *[other] The target needs to have between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} heart damage.
+                [0] The target needs to have at most { $locMax } heart damage.
+                *[other] The target needs to have between { $locMin } and { $locMax } heart damage.
              }
 }
 
 construction-step-heart-damage-range = { $max ->
-    [2147483648] The target needs to have at least {NATURALFIXED($min, 2)} heart damage.
+    [2147483648] The target needs to have at least { $locMin } heart damage.
     *[other] { $min ->
-                [0] The target needs to have at most {NATURALFIXED($max, 2)} heart damage.
-                *[other] The target needs to have between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} heart damage.
+                [0] The target needs to have at most { $locMax } heart damage.
+                *[other] The target needs to have between { $locMin } and { $locMax } heart damage.
              }
 }
 
 construction-examine-lung-damage-range = { $max ->
-    [2147483648] The target needs to have at least {NATURALFIXED($min, 2)} lung damage.
+    [2147483648] The target needs to have at least { $locMin } lung damage.
     *[other] { $min ->
-                [0] The target needs to have at most {NATURALFIXED($max, 2)} lung damage.
-                *[other] The target needs to have between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} lung damage.
+                [0] The target needs to have at most { $locMax } lung damage.
+                *[other] The target needs to have between { $locMin } and { $locMax } lung damage.
              }
 }
 
 construction-step-lung-damage-range = { $max ->
-    [2147483648] The target needs to have at least {NATURALFIXED($min, 2)} lung damage.
+    [2147483648] The target needs to have at least { $locMin } lung damage.
     *[other] { $min ->
-                [0] The target needs to have at most {NATURALFIXED($max, 2)} lung damage.
-                *[other] The target needs to have between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} lung damage.
+                [0] The target needs to have at most { $locMax } lung damage.
+                *[other] The target needs to have between { $locMin } and { $locMax } lung damage.
              }
 }
 

@@ -9,6 +9,6 @@ public sealed partial class EtCO2Tooltip : UpdatableTooltip
         if (msg.WoundableData is not { } woundable)
             return;
 
-        Label.Text = Loc.GetString("health-analyzer-etco2-tooltip", ("gas", woundable.Etco2GasName), ("etco2", woundable.Etco2Name));
+        Label.Text = Loc.GetString("health-analyzer-etco2-tooltip", ("gas", Loc.GetString(woundable.Etco2GasName)), ("etco2", Loc.GetString(woundable.Etco2Name)));
     }
 }

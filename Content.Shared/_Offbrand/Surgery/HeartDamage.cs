@@ -31,17 +31,35 @@ public sealed partial class HeartDamage : IGraphCondition
         if (heartrate.Damage >= Min && heartrate.Damage <= Max)
             return false;
 
-        args.PushMarkup(Loc.GetString("construction-examine-heart-damage-range", ("min", Min.Float()), ("max", Max == FixedPoint2.MaxValue ? (float) int.MaxValue : Max.Float())));
+        var tMax = Max == FixedPoint2.MaxValue ? (float) int.MaxValue : Max.Float();
+        var locMax = string.Format("{0:2}", tMax).Replace('.', ',').TrimEnd('0').TrimEnd(',');
+        var locMin = string.Format("{0:2}", Min.Float()).Replace('.', ',').TrimEnd('0').TrimEnd(',');
+
+        args.PushMarkup(Loc.GetString("construction-examine-heart-damage-range",
+                    ("max", Max == FixedPoint2.MaxValue ? (float) int.MaxValue : Max.Float()),
+                    ("min", Min.Float()),
+                    ("locMin", locMin),
+                    ("locMax", locMax)));
+
         return true;
     }
 
     public IEnumerable<ConstructionGuideEntry> GenerateGuideEntry()
     {
+        var tMax = Max == FixedPoint2.MaxValue ? (float) int.MaxValue : Max.Float();
+        var locMax = string.Format("{0:2}", tMax).Replace('.', ',').TrimEnd('0').TrimEnd(',');
+        var locMin = string.Format("{0:2}", Min.Float()).Replace('.', ',').TrimEnd('0').TrimEnd(',');
+
         yield return new ConstructionGuideEntry()
         {
             Localization = "construction-step-heart-damage-range",
             Arguments =
-                [ ("min", Min.Float()), ("max", Max == FixedPoint2.MaxValue ? (float) int.MaxValue : Max.Float()) ],
+                [
+                    ("max", Max == FixedPoint2.MaxValue ? (float) int.MaxValue : Max.Float()),
+                    ("min", Min.Float()),
+                    ("locMin", locMin),
+                    ("locMax", locMax)
+                ],
         };
     }
 }
