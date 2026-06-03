@@ -51,13 +51,13 @@
   - type: UniqueWoundOnDamage
     wounds:
     - damageTypes: [Slash, Piercing]
-      minimumDamage: 15
-      minimumTotalDamage: 25
+      minimumDamage: 18
+      minimumTotalDamage: 35
       woundPrototype: WoundArterialBleeding
       woundDamages:
         types:
           Slash: 5
-      damageProbabilityCoefficient: 0.01
+      damageProbabilityCoefficient: 0.002
       damageProbabilityConstant: 0
     - damageTypes: [Blunt]
       minimumDamage: 20
@@ -237,11 +237,11 @@
       x0: 3
   - type: BrainDamageOxygenation
     oxygenationDamageThresholds:
-      0.10: [1.0, [100, 0.75]]
-      0.30: [0.7, [ 90, 0.75]]
-      0.60: [0.6, [ 60, 0.75]]
-      0.70: [0.4, [ 40, 0.75]]
-      0.85: [0.3, [ 20, 0.75]]
+      0.10: [1.0, [100, 0.25]]
+      0.30: [0.7, [ 90, 0.25]]
+      0.60: [0.6, [ 60, 0.25]]
+      0.70: [0.4, [ 40, 0.25]]
+      0.85: [0.3, [ 20, 0.25]]
     oxygenDepletionThresholds:
       0.30: [0.6, 1]
     oxygenRegeneration: 1
