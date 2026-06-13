@@ -323,6 +323,26 @@
     understood:
       - Translate
     specieLanguage: Ternary
+  - type: Instrument
+    allowPercussion: false
+    handheld: false
+    program: 2
+  - type: UserInterface
+    interfaces:
+      enum.HumanoidMarkingModifierKey.Key:
+        type: HumanoidMarkingModifierBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.CharacterInformationUiKey.Key:
+        type: CharacterInformationBoundUserInterface
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+        requireInputValidation: true
+  - type: MobStateActions
+    actions:
+      Alive:
+        - ActionPAIPlayMidi
+  - type: Actions
   - type: MobCollision # WL-Changes: MobCollision works for players only
   - type: OfferItem # CorvaxGoob-Offer
 

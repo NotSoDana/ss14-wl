@@ -145,6 +145,11 @@
         type: IpcFaceUserInterface
       enum.CharacterInformationUiKey.Key: # WL-CharacterInformation
         type: CharacterInformationBoundUserInterface
+      # WL-Midi-Start
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+        requireInputValidation: true
+      # WL-Midi-End
   - type: InteractionPopup
     successChance: 1
     interactSuccessString: hugging-success-generic
@@ -277,6 +282,17 @@
       - Translate
     specieLanguage: Ternary
   #WL-Changes: Languages end
+  # WL-Midi-Start
+  - type: Instrument
+    allowPercussion: false
+    handheld: false
+    program: 2
+  - type: MobStateActions
+    actions:
+      Alive:
+      - ActionPAIPlayMidi
+  - type: Actions
+  # WL-Midi-End
   - type: MobCollision # WL-Changes: MobCollision works for players only
   - type: OfferItem # CorvaxGoob-Offer
 
