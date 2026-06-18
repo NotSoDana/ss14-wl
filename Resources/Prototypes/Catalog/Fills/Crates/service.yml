@@ -292,6 +292,7 @@
         - id: DrinkTeaJug
         - id: DrinkTonicWaterBottleFull
         - id: DrinkWaterMelonJuiceJug
+        - id: DrinkDarkBeerBottleFull # Corvax-WL
 
 - type: entity
   parent: CrateFreezer
