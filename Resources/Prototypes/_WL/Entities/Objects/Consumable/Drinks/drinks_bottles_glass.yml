@@ -1,8 +1,8 @@
 - type: entity
   parent: [DrinkVisualsAllFilled, DrinkBottleGlassSmallBaseFull]
   id: DrinkDarkBeerBottleFull
-  name: dark beer bottle
-  description: A rich, dark alcoholic beverage made from roasted malt.
+  name: Kaiserblanche beer bottle
+  description: A hoppy drink with a creamy texture, coffee bitterness and notes of burnt caramel.
   components:
   - type: SolutionContainerManager
     solutions:

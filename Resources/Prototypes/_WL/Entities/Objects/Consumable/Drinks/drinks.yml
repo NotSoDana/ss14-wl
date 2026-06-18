@@ -32,7 +32,7 @@
 
 - type: entity
   parent: DrinkGlass
-  id: DrinkDarkBeerglass
+  id: DrinkDarkBeerGlass
   suffix: dark beer
   components:
   - type: SolutionContainerManager
