@@ -1,0 +1,23 @@
+- type: entity
+  parent: [DrinkVisualsAllFilled, DrinkBottleGlassSmallBaseFull]
+  id: DrinkDarkBeerBottleFull
+  name: dark beer bottle
+  description: A rich, dark alcoholic beverage made from roasted malt.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: DarkBeer
+          Quantity: 50
+  - type: Label
+    currentLabel: reagent-name-dark-beer
+  - type: Sprite
+    sprite: _WL/Objects/Consumable/Drinks/darkbeer.rsi
+  - type: Openable
+    closeable: false
+  - type: Sealable
+    examineTextUnsealed: "sealable-component-on-examine-is-unsealed-crown-cap"
+  - type: Tag
+    tags:
+    - Beer
