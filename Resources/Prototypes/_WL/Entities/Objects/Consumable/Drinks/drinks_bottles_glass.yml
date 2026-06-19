@@ -1,7 +1,7 @@
 - type: entity
   parent: [DrinkVisualsAllFilled, DrinkBottleGlassSmallBaseFull]
   id: DrinkDarkBeerBottleFull
-  name: Kaiserblanche beer bottle
+  name: Kaiserstout beer bottle
   description: A hoppy drink with a creamy texture, coffee bitterness and notes of burnt caramel.
   components:
   - type: SolutionContainerManager
@@ -21,3 +21,4 @@
   - type: Tag
     tags:
     - Beer
+    - DrinkBottle

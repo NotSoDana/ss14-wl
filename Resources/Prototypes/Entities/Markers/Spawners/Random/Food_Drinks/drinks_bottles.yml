@@ -52,6 +52,7 @@
     - id: DrinkAleBottleFull
     - id: DrinkAleBottleFullGrowler
     - id: DrinkChampagneBottleFull
+    - id: DrinkDarkBeerBottleFull # Corvax-WL
 
 - type: entityTable
   id: RandomRareAlcoholTable
