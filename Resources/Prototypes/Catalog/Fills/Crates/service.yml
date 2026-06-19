@@ -315,7 +315,7 @@
         - id: DrinkVodkaBottleFull
         - id: DrinkWhiskeyBottleFull
         - id: DrinkWineBottleFull
-        - id: DrinkDarkBeerBottleFull # Corvax-WL
+        - id: DrinkDarkBeerBottleFullGrowler   # Corvax-WL
 
 - type: entity
   parent: CratePlastic
