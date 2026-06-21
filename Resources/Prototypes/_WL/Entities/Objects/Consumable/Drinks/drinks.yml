@@ -38,7 +38,6 @@
   - type: SolutionContainerManager
     solutions:
       drink:
-        maxVol: 30
         reagents:
         - ReagentId: DarkBeer
           Quantity: 30
