@@ -36,7 +36,7 @@
   suffix: dark beer
   components:
   - type: Solution
-    solutions:
+    solution:
       drink:
         reagents:
         - ReagentId: DarkBeer

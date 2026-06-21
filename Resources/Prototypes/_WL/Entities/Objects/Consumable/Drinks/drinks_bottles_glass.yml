@@ -5,7 +5,7 @@
   description: A hoppy drink with a creamy texture, coffee bitterness and notes of burnt caramel.
   components:
   - type: Solution
-    solutions:
+    solution:
       drink:
         reagents:
         - ReagentId: DarkBeer
@@ -29,7 +29,7 @@
   description: A hoppy drink with a creamy texture, coffee bitterness and notes of burnt caramel. XL growler bottle.
   components:
   - type: Solution
-    solutions:
+    solution:
       drink:
         maxVol: 150
         reagents:
