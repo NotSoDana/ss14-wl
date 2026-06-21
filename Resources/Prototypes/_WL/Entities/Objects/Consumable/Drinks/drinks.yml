@@ -35,7 +35,7 @@
   id: DrinkDarkBeerGlass
   suffix: dark beer
   components:
-  - type: SolutionContainerManager
+  - type: Solution
     solutions:
       drink:
         reagents:

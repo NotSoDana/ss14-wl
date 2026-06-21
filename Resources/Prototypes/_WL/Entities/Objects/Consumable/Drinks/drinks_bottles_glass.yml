@@ -4,7 +4,7 @@
   name: Kaiserstout beer bottle
   description: A hoppy drink with a creamy texture, coffee bitterness and notes of burnt caramel.
   components:
-  - type: SolutionContainerManager
+  - type: Solution
     solutions:
       drink:
         reagents:
@@ -28,7 +28,7 @@
   name: Kaiserstout beer growler
   description: A hoppy drink with a creamy texture, coffee bitterness and notes of burnt caramel. XL growler bottle.
   components:
-  - type: SolutionContainerManager
+  - type: Solution
     solutions:
       drink:
         maxVol: 150
