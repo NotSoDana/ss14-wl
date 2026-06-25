@@ -15084,6 +15084,8 @@ entities:
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
     - type: NavMap
+    - type: BecomesStation
+      id: CorvaxFenrir
     - type: TileHistory
       chunkHistory: {}
   - uid: 3814

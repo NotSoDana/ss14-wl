@@ -188,13 +188,6 @@ entities:
     - type: Transform
       pos: 3.5,3.5
       parent: 1
-- proto: HeadIpc
-  entities:
-  - uid: 95
-    components:
-    - type: Transform
-      pos: 4.7403584,2.1355953
-      parent: 1
 - proto: HydroponicsTrayMachineCircuitboard
   entities:
   - uid: 73
@@ -217,20 +210,6 @@ entities:
     - type: Transform
       rot: -2.0943951023931953 rad
       pos: 3.7716084,1.7501783
-      parent: 1
-- proto: LeftArmIpc
-  entities:
-  - uid: 97
-    components:
-    - type: Transform
-      pos: 4.063275,2.7397618
-      parent: 1
-- proto: LeftHandIpc
-  entities:
-  - uid: 96
-    components:
-    - type: Transform
-      pos: 4.136192,2.4376783
       parent: 1
 - proto: MachineFrame
   entities:
@@ -261,14 +240,6 @@ entities:
     - type: Transform
       pos: 4.5,2.5
       parent: 1
-- proto: OrganIPCBrain
-  entities:
-  - uid: 99
-    components:
-    - type: Transform
-      rot: 0.7504915783575618 rad
-      pos: 4.6153584,1.5105948
-      parent: 1
 - proto: PowerCellHigh
   entities:
   - uid: 79
@@ -296,13 +267,6 @@ entities:
     components:
     - type: Transform
       pos: 4.5,4.5
-      parent: 1
-- proto: RightArmIpc
-  entities:
-  - uid: 98
-    components:
-    - type: Transform
-      pos: 3.5528584,2.1147618
       parent: 1
 - proto: ScrapGlass
   entities:

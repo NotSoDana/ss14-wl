@@ -2670,7 +2670,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -9.5,3.5
       parent: 1
-- proto: GasMixerOn
+- proto: GasMixer
   entities:
   - uid: 390
     components:
@@ -3398,7 +3398,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 0.5,9.5
       parent: 1
-- proto: GasPressurePumpOnMax
+- proto: GasPressurePump
   entities:
   - uid: 514
     components:
